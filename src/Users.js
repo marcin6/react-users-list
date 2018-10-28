@@ -34,7 +34,6 @@ class Users extends Component {
                 errorMsg: "Enter name!!",
             });
         }
-
     }
 
     removeUser = (userKey) => {
