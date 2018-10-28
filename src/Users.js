@@ -28,6 +28,18 @@ class Users extends Component {
                     this.fileInput.value = "";
     }
 
+    removeUser = (userKey) => {
+        let filteredUser = this.state.userList.filter( (user) => 
+            user.key !== userKey );
+
+        this.setState({
+            userList: filteredUser,
+        });
+
+      
+    }
+
+
     render() {
         return (
             <div className = "users-main">
@@ -36,7 +48,7 @@ class Users extends Component {
                     <input ref={(input) => this.fileInput = input} type="text" placeholder="Enter name"></input>
                     <button type="submit">Add users</button>
                 </form>
-                <UsersList usersList={this.state.userList} />
+                <UsersList removeUser={this.removeUser} usersList={this.state.userList} />
            </div>
         )
     }
