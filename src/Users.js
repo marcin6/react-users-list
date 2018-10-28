@@ -15,6 +15,8 @@ class Users extends Component {
     addUser = (e) => {
         e.preventDefault();
         
+        if (this.validate(this.fileInput) ) {
+
                 let newUser = {
                     key: Date.now(),
                     userName: this.fileInput.value, 
@@ -22,22 +24,34 @@ class Users extends Component {
                     this.setState( (prevState) => {
                         return({
                             userList: prevState.userList.concat(newUser),
+                            errorMsg: "",
                         })
                     })
                     
                     this.fileInput.value = "";
+        } else {
+            this.setState ({
+                errorMsg: "Enter name!!",
+            });
+        }
     }
 
     removeUser = (userKey) => {
-        let filteredUser = this.state.userList.filter( (user) => 
-            user.key !== userKey );
+        let filteredUser = this.state.userList.filter( (user) => user.key !== userKey );
 
         this.setState({
             userList: filteredUser,
         });
-
-      
     }
+
+    validate = (item) => {
+        if (item.value === "") {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 
 
     render() {
@@ -48,6 +62,9 @@ class Users extends Component {
                     <input ref={(input) => this.fileInput = input} type="text" placeholder="Enter name"></input>
                     <button type="submit">Add users</button>
                 </form>
+
+                {/* <div className="error-msg">{this.state.errorMsg}</div> */}
+
                 <UsersList removeUser={this.removeUser} usersList={this.state.userList} />
            </div>
         )
