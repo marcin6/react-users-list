@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-// import UsersList from './UsersList';
+import UsersList from './UsersList';
+import './Users.css'
 
 class Users extends Component {
     
@@ -35,7 +36,7 @@ class Users extends Component {
                     <input ref={(input) => this.fileInput = input} type="text" placeholder="Enter name"></input>
                     <button type="submit">Add users</button>
                 </form>
-                {/* <UsersList /> */}
+                <UsersList usersList={this.state.userList} />
            </div>
         )
     }

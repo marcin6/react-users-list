@@ -1,21 +1,21 @@
 import React, {Component} from 'react';
 
-class UsersList extends Component {
+class UsersList extends Component {   
     
-    function CustomTextInput(props) {
-    return (
-        <div>
-            <input ref={props.inputRef} />
-        </div>
-    );
-}
-
-    
+    createUser = (user) => {
+        return(
+            <li key={user.key}>{user.userName}</li>
+        )
+    }
     
     render() {
+
+        let usersList = this.props.usersList;
+        let usersLi = usersList.map(this.createUser);
+
         return(
             <ul className="the-list">
-                <CustomTextInput inputRef={input => this.fileInput = input}/>
+               {usersLi}
             </ul>
         )
     }
