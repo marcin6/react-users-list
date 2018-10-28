@@ -34,6 +34,7 @@ class Users extends Component {
                 errorMsg: "Enter name!!",
             });
         }
+
     }
 
     removeUser = (userKey) => {
@@ -63,7 +64,7 @@ class Users extends Component {
                     <button type="submit">Add users</button>
                 </form>
 
-                {/* <div className="error-msg">{this.state.errorMsg}</div> */}
+                <div className="error-msg">{this.state.errorMsg}</div>
 
                 <UsersList removeUser={this.removeUser} usersList={this.state.userList} />
            </div>
