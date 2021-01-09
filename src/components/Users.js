@@ -39,6 +39,7 @@ export default function Users() {
 
     return (
         <div className="users-main">
+            <h1>User's List</h1>
             <form onSubmit={addUser}>
                 <input value={value} onChange={e => setValue(e.target.value)} type="text" placeholder="Enter name"></input>
                 <button type="submit">Add users</button>
